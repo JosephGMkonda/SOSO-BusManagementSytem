@@ -17,4 +17,5 @@ public class BusResponse {
     private String numberPlate;
     private String route;
     private BigDecimal price;
+    private String driverId;
 }

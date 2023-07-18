@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.codebuddies</groupId>
-	<artifactId>bus-service</artifactId>
+	<artifactId>busManagement-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bus-service</name>
-	<description>this is a bus service </description>
+	<name>busManagement-service</name>
+	<description>this is a busManagement service </description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

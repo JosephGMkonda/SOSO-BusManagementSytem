@@ -1,7 +1,7 @@
 package com.codebuddies.busservice.service;
 import com.codebuddies.busservice.dto.BusRequest;
 import com.codebuddies.busservice.dto.BusResponse;
-import com.codebuddies.busservice.model.Bus;
+import com.codebuddies.busservice.model.BusManagement;
 import com.codebuddies.busservice.repository.BusRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,50 +22,50 @@ public class BusService {
 
     //adding bus repository into database
     public void createBus(BusRequest busRequest){
-        Bus bus = Bus.builder()
+        BusManagement busManagement = BusManagement.builder()
                 .name(busRequest.getName())
                 .numberPlate(busRequest.getNumberPlate())
                 .route(busRequest.getRoute())
                 .price(busRequest.getPrice())
                 .build();
-        busRepository.save(bus);
+        busRepository.save(busManagement);
     }
 
-    //update the Bus
+    //update the BusManagement
     public void updateBus(String busId, BusRequest busRequest){
-        Bus bus = busRepository.findById(busId)
-                .orElseThrow(() -> new NoSuchElementException("Bus not find"));
+        BusManagement busManagement = busRepository.findById(busId)
+                .orElseThrow(() -> new NoSuchElementException("BusManagement not find"));
 
-        bus.setName(busRequest.getName());
-        bus.setNumberPlate(busRequest.getName());
-        bus.setRoute(busRequest.getRoute());
-        bus.setPrice(busRequest.getPrice());
+        busManagement.setName(busRequest.getName());
+        busManagement.setNumberPlate(busRequest.getName());
+        busManagement.setRoute(busRequest.getRoute());
+        busManagement.setPrice(busRequest.getPrice());
 
-        busRepository.save(bus);
+        busRepository.save(busManagement);
     }
 
     // delete bus
     public void deleteBus(String busId){
-        Bus bus = busRepository.findById(busId)
-                .orElseThrow(() -> new NoSuchElementException("Bus is not found"));
-        busRepository.delete(bus);
+        BusManagement busManagement = busRepository.findById(busId)
+                .orElseThrow(() -> new NoSuchElementException("BusManagement is not found"));
+        busRepository.delete(busManagement);
     }
 
     // getting all the Buses
     public List<BusResponse> getAllBuses(){
-        List<Bus> buses = busRepository.findAll();
+        List<BusManagement> busManagements = busRepository.findAll();
         List<BusResponse>  busResponses = new ArrayList<>();
 
 
-        for (Bus bus : buses){
+        for (BusManagement busManagement : busManagements){
             BusResponse busResponse = new BusResponse();
-            busResponse.setId(bus.getId());
-            busResponse.setName(bus.getName());
-            busResponse.setNumberPlate(bus.getNumberPlate());
-            busResponse.setRoute(bus.getRoute());
-            busResponse.setRoute(bus.getRoute());
+            busResponse.setId(busManagement.getId());
+            busResponse.setName(busManagement.getName());
+            busResponse.setNumberPlate(busManagement.getNumberPlate());
+            busResponse.setRoute(busManagement.getRoute());
+            busResponse.setPrice(busManagement.getPrice());
 
-            busResponse.add(busResponse);
+            busResponses.add(busResponse);
         }
 
         return busResponses;
