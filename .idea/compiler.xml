@@ -8,18 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="base-domains" />
+        <module name="busManagement-service" />
         <module name="report-service" />
         <module name="authentication-service" />
-        <module name="bus-service" />
         <module name="ticket-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="authentication-service" target="17" />
-      <module name="base-domains" target="17" />
       <module name="bus-service" target="17" />
-      <module name="report-service" target="17" />
-      <module name="ticket-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -27,6 +23,7 @@
       <module name="authentication-service" options="-parameters" />
       <module name="base-domains" options="-parameters" />
       <module name="bus-service" options="-parameters" />
+      <module name="busManagement-service" options="-parameters" />
       <module name="report-service" options="-parameters" />
       <module name="ticket-service" options="-parameters" />
     </option>

@@ -3,11 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SOSO-BusManagementSystem.iml" filepath="$PROJECT_DIR$/.idea/SOSO-BusManagementSystem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/authentication-service/authentication-service.iml" filepath="$PROJECT_DIR$/authentication-service/authentication-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/base-domains/base-domains.iml" filepath="$PROJECT_DIR$/base-domains/base-domains.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bus-service/bus-service.iml" filepath="$PROJECT_DIR$/bus-service/bus-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/report-service/report-service.iml" filepath="$PROJECT_DIR$/report-service/report-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ticket-service/ticket-service.iml" filepath="$PROJECT_DIR$/ticket-service/ticket-service.iml" />
     </modules>
   </component>
 </project>
