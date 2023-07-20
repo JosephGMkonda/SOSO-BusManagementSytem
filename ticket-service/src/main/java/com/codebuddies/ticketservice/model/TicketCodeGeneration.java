@@ -1,5 +1,5 @@
 package com.codebuddies.ticketservice.model;
-import java.util.UUID
+import java.util.UUID;
 public class TicketCodeGeneration {
     public static String genarateCode(){
         String uuid = UUID.randomUUID().toString().replaceAll("-","");

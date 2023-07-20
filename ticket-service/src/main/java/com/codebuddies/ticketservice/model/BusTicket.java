@@ -1,6 +1,7 @@
 package com.codebuddies.ticketservice.model;
 
 
+import com.codebuddies.ticketservice.dto.BusTicketRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,11 +21,16 @@ public class BusTicket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullName;
+    private String phoneNumber;
     private LocalDateTime createdDateTime;
+    private  String Code;
 
-    public BusTicket(){
+    public BusTicket(BusTicketRequest busTicketRequest){
         this.Code = TicketCodeGeneration.genarateCode();
         this.createdDateTime = LocalDateTime.now();
+        this.fullName = busTicketRequest.getFullName();
     }
 
 }
+
+//wb=b^)v*
