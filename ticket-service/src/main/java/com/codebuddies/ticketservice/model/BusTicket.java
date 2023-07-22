@@ -32,13 +32,12 @@ public class BusTicket {
         this.fullName = busTicketRequest.getFullName();
 
         if (PhoneNumberVerifier.verifyPhoneNumber(busTicketRequest.getPhoneNumber())){
-            this.phoneNumber = busTicketRequest.getPhoneNumber();
+            throw new IllegalAccessException("Invalid phone number: " + busTicketRequest.getPhoneNumber());
 
-        }else {
-            throw new IllegalAccessException("Invalid phone number");
         }
+        this.phoneNumber = busTicketRequest.getPhoneNumber();
     }
 
 }
 
-//wb=b^)v*
+
