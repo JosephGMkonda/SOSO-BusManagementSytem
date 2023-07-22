@@ -16,8 +16,15 @@ public class BusTicketService {
         this.busTicketRepository = busTicketRepository;
     }
 
-    public BusTicket createTicket(BusTicketRequest busTicketRequest){
-        BusTicket busTicket = new BusTicket(busTicketRequest);
+    public BusTicket createTicket(BusTicketRequest busTicketRequest) throws IllegalAccessException {
+        BusTicket busTicket = null;
+        try {
+            busTicket = new BusTicket(busTicketRequest);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
         return busTicketRepository.save(busTicket);
     }
+
+
 }

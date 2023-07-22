@@ -11,4 +11,5 @@ import lombok.Setter;
 @Setter
 public class BusTicketRequest {
     private String fullName;
+    private String phoneNumber;
 }
