@@ -24,6 +24,7 @@ public class BusTicketController {
     @PostMapping("/tickets")
     public ResponseEntity<BusTicket> createBusTicket(@RequestBody BusTicketRequest busTicketRequest) throws IllegalAccessException {
         BusTicket createdTicket = busTicketService.createTicket(busTicketRequest);
+        busTicketService.sendTicketText(busTicketRequest.getPhoneNumber(), createdTicket);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTicket);
 
     }
