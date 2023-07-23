@@ -17,7 +17,7 @@ public class BusTicketService {
 
     private final BusTicketRepository busTicketRepository;
     private static final String ACCOUNT_SID = "AC57e8706560c646094599256611987111";
-    private static final String AUTH_TOKEN = "01d0c8a94be8a68cd379f1b5bb5be9da";
+    private static final String AUTH_TOKEN = "37e23b7a8680a70d5852e339d60579b5";
 
 
 
@@ -27,10 +27,25 @@ public class BusTicketService {
         Twilio.init(ACCOUNT_SID,AUTH_TOKEN);
     }
 
+    //converting number to +265 format
+    private String toE164Format(String phoneNumber){
+        String cleanNumber = phoneNumber.replaceAll("[^0-9]", "");
+
+        if(cleanNumber.startsWith("0")){
+            cleanNumber.substring(1);
+
+        }
+        String e164Format = "+265" + cleanNumber;
+
+        return e164Format;
+    }
+
     public BusTicket createTicket(BusTicketRequest busTicketRequest) throws IllegalAccessException {
-      if(!isValidPhoneNumber(busTicketRequest.getPhoneNumber())){
-          throw new IllegalAccessException("Invalid phone number");
-      }
+        String e164FormattedNumber = toE164Format(busTicketRequest.getPhoneNumber());
+
+//        if(!isValidPhoneNumber(e164FormattedNumber)){
+//          throw new IllegalAccessException("Invalid phone number");
+//      }
         BusTicket busTicket = new BusTicket(busTicketRequest);
         return busTicketRepository.save(busTicket);
 
@@ -38,6 +53,8 @@ public class BusTicketService {
     //+12703419864
     // sending text to the customer 
     public void sendTicketText(String phoneNumber, BusTicket busTicket){
+        String e164FormattedNumber = toE164Format(phoneNumber);
+
         String messageBody =
                 "==============="
                 +busTicket.getFullName() +
@@ -49,7 +66,7 @@ public class BusTicketService {
         messageBody += "valid time =====" + validTime + "\n";
 
         Message message = Message.creator(
-                new PhoneNumber(phoneNumber),
+                new PhoneNumber(e164FormattedNumber),
                 new PhoneNumber("+12703419864"),
                 messageBody
         ).create();
@@ -58,7 +75,7 @@ public class BusTicketService {
 
     }
     private boolean isValidPhoneNumber(String phoneNumber){
-        if(phoneNumber != null && phoneNumber.matches("\\d{10}")){
+        if(phoneNumber != null && phoneNumber.matches("^\\\\+\\\\d{1,15}$")){
             return true;
         }
         return false;

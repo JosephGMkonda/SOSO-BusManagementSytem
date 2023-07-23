@@ -31,10 +31,10 @@ public class BusTicket {
         this.createdDateTime = LocalDateTime.now();
         this.fullName = busTicketRequest.getFullName();
 
-        if (PhoneNumberVerifier.verifyPhoneNumber(busTicketRequest.getPhoneNumber())){
-            throw new IllegalAccessException("Invalid phone number: " + busTicketRequest.getPhoneNumber());
-
-        }
+//        if (PhoneNumberVerifier.verifyPhoneNumber(busTicketRequest.getPhoneNumber())){
+//            throw new IllegalAccessException("Invalid phone number: " + busTicketRequest.getPhoneNumber());
+//
+//        }
         this.phoneNumber = busTicketRequest.getPhoneNumber();
     }
 
